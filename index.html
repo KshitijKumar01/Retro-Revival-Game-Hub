@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Retro Revival Game Hub</title>
+    <!-- Reload trigger -->
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            background-color: #008080;
+            font-family: "Courier New", monospace;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        
+        #game-canvas {
+            border: 2px solid #FFFFFF;
+            background-color: #C0C0C0;
+            image-rendering: pixelated;
+            image-rendering: crisp-edges;
+        }
+        
+        .instructions {
+            color: #FFFFFF;
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <canvas id="game-canvas" width="800" height="600"></canvas>
+        <div class="instructions">
+            <p>Use ↑↓ arrow keys to navigate, ENTER to select</p>
+            <p>ESC to pause/resume games or return to menu</p>
+            <p><strong>Snake Game:</strong> H = Toggle AI, C = Challenge Mode, R = Reset</p>
+        </div>
+    </div>
+    
+    <script type="module" src="./src/index.ts"></script>
+</body>
+</html>

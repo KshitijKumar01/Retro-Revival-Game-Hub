@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debug Game Loading</title>
+</head>
+<body>
+    <h1>Debug Game Loading</h1>
+    <div id="output"></div>
+    <canvas id="game-canvas" width="800" height="600" style="border: 1px solid black;"></canvas>
+    
+    <script type="module">
+        const output = document.getElementById('output');
+        
+        function log(message) {
+            console.log(message);
+            output.innerHTML += '<p>' + message + '</p>';
+        }
+        
+        async function testGameLoading() {
+            try {
+                log('Testing Snake game loading...');
+                const { SnakeGame } = await import('./src/games/snake/index.js');
+                log('✓ Snake game imported successfully');
+                
+                const snakeGame = new SnakeGame();
+                log('✓ Snake game instantiated');
+                
+                const canvas = document.getElementById('game-canvas');
+                snakeGame.initialize(canvas);
+                log('✓ Snake game initialized');
+                
+                log('Testing Tetris game loading...');
+                const { TetrisGame } = await import('./src/games/tetris/index.js');
+                log('✓ Tetris game imported successfully');
+                
+                const tetrisGame = new TetrisGame();
+                log('✓ Tetris game instantiated');
+                
+                tetrisGame.initialize(canvas);
+                log('✓ Tetris game initialized');
+                
+                log('All games loaded successfully!');
+                
+            } catch (error) {
+                log('❌ Error: ' + error.message);
+                log('Stack: ' + error.stack);
+            }
+        }
+        
+        testGameLoading();
+    </script>
+</body>
+</html>

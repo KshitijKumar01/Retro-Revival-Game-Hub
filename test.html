@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test</title>
+</head>
+<body>
+    <h1>Test Page</h1>
+    <canvas id="game-canvas" width="800" height="600" style="border: 1px solid black;"></canvas>
+    
+    <script type="module">
+        console.log('Script loading...');
+        
+        try {
+            const { GameHubControllerImpl } = await import('./src/shared/GameHubController.js');
+            console.log('GameHubControllerImpl loaded:', GameHubControllerImpl);
+            
+            const gameHub = new GameHubControllerImpl({
+                canvasId: 'game-canvas',
+                theme: 'win95',
+                enableCRT: false,
+                enableAudio: true,
+                autoStart: true
+            });
+            
+            console.log('GameHub initialized:', gameHub);
+            window.gameHub = gameHub;
+        } catch (error) {
+            console.error('Error loading game hub:', error);
+            document.body.innerHTML += '<p style="color: red;">Error: ' + error.message + '</p>';
+        }
+    </script>
+</body>
+</html>
