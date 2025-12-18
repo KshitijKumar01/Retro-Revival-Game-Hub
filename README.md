@@ -45,7 +45,7 @@ npm install
 npm run dev -- --port 5174
 ```
 
-Open [http://localhost:5173](http://localhost:5173) in your browser.
+Open [http://localhost:5174](http://localhost:5174) in your browser.
 
 ## 🎮 How to Play
 
